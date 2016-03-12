@@ -48,9 +48,9 @@ namespace Example2.Model
         public DrawerState(PictureBox pictureBox1)
         {
             this.pictureBox1 = pictureBox1;
-            bmp = new Bitmap(this.pictureBox1.Width, this.pictureBox1.Height);
-            g = Graphics.FromImage(bmp);
-            pictureBox1.Image = bmp;
+            
+            Load("");
+
             DrawTool = DrawTool.Pen;
             Shape = Shape.Pencil;
 
@@ -91,7 +91,23 @@ namespace Example2.Model
             pictureBox1.Refresh();
         }
 
-       
+        public void Save(string fileName)
+        {
+            bmp.Save(fileName);
+        }
 
+        public void Load(string fileName)
+        {
+            if (string.IsNullOrEmpty(fileName))
+            {
+                bmp = new Bitmap(this.pictureBox1.Width, this.pictureBox1.Height);
+            }
+            else {
+                bmp = new Bitmap(fileName);
+            }
+
+            g = Graphics.FromImage(bmp);
+            pictureBox1.Image = bmp;
+        }
     }
 }

@@ -126,5 +126,30 @@ namespace Example2
         {
             drawer.DrawTool = DrawTool.Brush;
         }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            if(colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                drawer.pen.Color = colorDialog1.Color;
+            }
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                drawer.Save(saveFileDialog1.FileName);
+            }
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(openFileDialog1.ShowDialog () == DialogResult.OK)
+            {
+                drawer.Load(openFileDialog1.FileName);
+            }
+        }
     }
 }
